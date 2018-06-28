@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using EPAM.TvMaze.Contracts;
+using EPAM.TvMaze.Scrapper.Contracts.Models;
+using EPAM.TvMaze.Scrapper.Contracts.Services;
 using Serilog;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Services
 {
     public class ShowsSynchronizationService : IShowsSynchronizationService
     {

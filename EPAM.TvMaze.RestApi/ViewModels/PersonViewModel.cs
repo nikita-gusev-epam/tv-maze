@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.RestApi.ViewModels
 {
-    public class PersonEntity
+    public class PersonViewModel
     {
         public int Id { get; set; }
 

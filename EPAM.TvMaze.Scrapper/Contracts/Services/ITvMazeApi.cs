@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EPAM.TvMaze.Scrapper.Contracts.Models;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Contracts.Services
 {
     public interface ITvMazeApi
     {

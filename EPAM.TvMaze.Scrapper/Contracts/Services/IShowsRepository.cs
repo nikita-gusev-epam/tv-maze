@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
+using EPAM.TvMaze.Contracts;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Contracts.Services
 {
     public interface IShowsRepository
     {

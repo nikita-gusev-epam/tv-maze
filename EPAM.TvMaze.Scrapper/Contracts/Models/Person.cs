@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Contracts.Models
 {
     public class Person
     {

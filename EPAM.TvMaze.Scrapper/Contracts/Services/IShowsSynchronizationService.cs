@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Contracts.Services
 {
     public interface IShowsSynchronizationService
     {

@@ -1,7 +1,11 @@
 ﻿using System.Collections.Specialized;
+using System.Configuration;
 using System.Threading;
 using Autofac;
 using Autofac.Extras.Quartz;
+using EPAM.TvMaze.Contracts;
+using EPAM.TvMaze.Scrapper.Contracts.Services;
+using EPAM.TvMaze.Scrapper.Services;
 using MongoDB.Driver;
 
 namespace EPAM.TvMaze.Scrapper
@@ -22,15 +26,15 @@ namespace EPAM.TvMaze.Scrapper
             });
             cb.RegisterModule(new QuartzAutofacJobsModule(typeof(ContainerConfiguration).Assembly));
 
-            var host = "http://api.tvmaze.com";
+            var host = ConfigurationManager.AppSettings["TvMazeApiEndpoint"];
             cb.Register(c => new TvMazeApi(host)).As<ITvMazeApi>().SingleInstance();
 
 
             cb.RegisterType<ShowsSynchronizationService>().As<IShowsSynchronizationService>();
 
-            var connectionString = "mongodb://localhost:32768";
-            var databaseName = "TvMaze";
-            var showsCollectionName = "Shows";
+            var connectionString = ConfigurationManager.AppSettings["MongoDbConnectionString"];
+            var databaseName = ConfigurationManager.AppSettings["TvMazeDbName"];
+            var showsCollectionName = ConfigurationManager.AppSettings["ShowsCollectionNameName"];
             cb.Register(c => new MongoClient(connectionString)
                     .GetDatabase(databaseName)
                     .GetCollection<ShowEntity>(showsCollectionName))

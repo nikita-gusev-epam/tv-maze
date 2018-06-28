@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Contracts
 {
     public class PersonEntity
     {

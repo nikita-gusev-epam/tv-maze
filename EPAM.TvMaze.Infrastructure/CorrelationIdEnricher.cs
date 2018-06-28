@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Infrastructure
 {
     public class CorrelationIdEnricher : ILogEventEnricher
     {

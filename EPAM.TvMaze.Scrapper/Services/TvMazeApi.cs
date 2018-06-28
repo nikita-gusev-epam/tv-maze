@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using EPAM.TvMaze.Scrapper.Contracts.Models;
+using EPAM.TvMaze.Scrapper.Contracts.Services;
 using Serilog;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Services
 {
     public class TvMazeApi : ITvMazeApi
     {

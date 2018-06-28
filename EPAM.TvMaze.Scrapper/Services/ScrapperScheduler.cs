@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
+using EPAM.TvMaze.Scrapper.Contracts.Services;
 using Quartz;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Services
 {
     public class ScrapperScheduler : IScrapperScheduler
     {

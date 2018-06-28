@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Contracts
 {
     public class ShowEntity
     {

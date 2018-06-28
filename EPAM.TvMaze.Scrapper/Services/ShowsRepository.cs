@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EPAM.TvMaze.Contracts;
+using EPAM.TvMaze.Scrapper.Contracts.Services;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Services
 {
     public class ShowsRepository: IShowsRepository
     {

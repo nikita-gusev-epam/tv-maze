@@ -1,7 +1,7 @@
 ﻿using System;
 using Quartz;
 
-namespace EPAM.TvMaze.Scrapper
+namespace EPAM.TvMaze.Scrapper.Contracts.Services
 {
     public interface IScrapperScheduler:IDisposable
     {
