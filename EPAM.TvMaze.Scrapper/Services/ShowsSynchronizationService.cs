@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using EPAM.TvMaze.Contracts;
 using EPAM.TvMaze.Scrapper.Contracts.Models;
 using EPAM.TvMaze.Scrapper.Contracts.Services;
@@ -36,7 +37,7 @@ namespace EPAM.TvMaze.Scrapper.Services
             List<Show> newShows;
             do
             {
-                newShows = (await _tvMazeApi.GetShowsAsync(currentPage)).ToList();
+                newShows = await _tvMazeApi.GetShowsAsync(currentPage);
 
                 var newShowsToAdd = newShows.Where(p => p.Id > latestShowId);
                 foreach (var newShow in newShowsToAdd)
@@ -66,17 +67,9 @@ namespace EPAM.TvMaze.Scrapper.Services
 
         private static ShowEntity MapShowEntity(Show newShow, IEnumerable<Cast> showCasts)
         {
-            var showEntity = new ShowEntity
-            {
-                Id = newShow.Id,
-                Name = newShow.Name,
-                Casts = showCasts.Select(cast => new PersonEntity
-                {
-                    Id = cast.Person.Id,
-                    Name = cast.Person.Name,
-                    BirthDay = cast.Person.BirthDay
-                }).ToList()
-            };
+            var showEntity = Mapper.Map<ShowEntity>(newShow);
+            showEntity.Casts = Mapper.Map<ICollection<PersonEntity>>(showCasts);
+
             return showEntity;
         }
     }

@@ -8,6 +8,6 @@ namespace EPAM.TvMaze.Contracts
 
         public string Name { get; set; }
 
-        public DateTime? BirthDay { get; set; }
+        public string BirthDay { get; set; }
     }
 }

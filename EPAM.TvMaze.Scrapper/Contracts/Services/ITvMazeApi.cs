@@ -6,7 +6,7 @@ namespace EPAM.TvMaze.Scrapper.Contracts.Services
 {
     public interface ITvMazeApi
     {
-        Task<IEnumerable<Show>> GetShowsAsync(int page);
-        Task<IEnumerable<Cast>> GetCastAsync(int showId);
+        Task<List<Show>> GetShowsAsync(int page);
+        Task<List<Cast>> GetCastAsync(int showId);
     }
 }

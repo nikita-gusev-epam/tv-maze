@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPAM.TvMaze.Contracts", "EP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPAM.TvMaze.Infrastructure", "EPAM.TvMaze.Infrastructure\EPAM.TvMaze.Infrastructure.csproj", "{F8491971-6397-4AC8-BC75-51F7F60ABE56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.TvMaze.RestApi", "EPAM.TvMaze.RestApi\EPAM.TvMaze.RestApi.csproj", "{2CD0899A-C66B-4B8E-B48A-2A3E7D82FA6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPAM.TvMaze.RestApi", "EPAM.TvMaze.RestApi\EPAM.TvMaze.RestApi.csproj", "{2CD0899A-C66B-4B8E-B48A-2A3E7D82FA6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.TvMaze.DAL.Shared", "EPAM.TvMaze.DAL.Shared\EPAM.TvMaze.DAL.Shared.csproj", "{DFE9EBD4-EDAE-4823-B204-59DF59C8B9DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{2CD0899A-C66B-4B8E-B48A-2A3E7D82FA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD0899A-C66B-4B8E-B48A-2A3E7D82FA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD0899A-C66B-4B8E-B48A-2A3E7D82FA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE9EBD4-EDAE-4823-B204-59DF59C8B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE9EBD4-EDAE-4823-B204-59DF59C8B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE9EBD4-EDAE-4823-B204-59DF59C8B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE9EBD4-EDAE-4823-B204-59DF59C8B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

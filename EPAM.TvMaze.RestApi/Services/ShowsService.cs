@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EPAM.TvMaze.RestApi.Contracts;
 using EPAM.TvMaze.RestApi.ViewModels;
 
 namespace EPAM.TvMaze.RestApi.Services
 {
-    public class ShowsService:IShowsService
+    public class ShowsService : IShowsService
     {
         private readonly IShowsRepository _showsRepository;
 
@@ -20,19 +21,8 @@ namespace EPAM.TvMaze.RestApi.Services
         {
             var skipCount = pageNumber * pageSize;
             var showEntities = await _showsRepository.GetShowsAsync(skipCount, pageSize);
-            var shows = showEntities.Select(show => new ShowViewModel
-            {
-                Id = show.Id,
-                Name = show.Name,
-                Casts = show.Casts.Select(cast => new PersonViewModel
-                    {
-                        Id = cast.Id,
-                        Name = cast.Name,
-                        BirthDay = cast.BirthDay
-                    }).OrderByDescending(p => p.BirthDay)
-                    .ToList()
-            }).ToList();
-
+            var shows = Mapper.Map<List<ShowViewModel>>(showEntities);
+            shows.ForEach(show => { show.Casts = show.Casts.OrderByDescending(p => p.BirthDay).ToList(); });
             return shows;
         }
     }

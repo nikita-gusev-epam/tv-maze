@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EPAM.TvMaze.Contracts;
+using EPAM.TvMaze.DAL.Shared;
 using EPAM.TvMaze.RestApi.Contracts;
 using MongoDB.Driver;
 
@@ -10,21 +10,21 @@ namespace EPAM.TvMaze.RestApi.Services
 {
     public class ShowsRepository : IShowsRepository
     {
-        private readonly IMongoCollection<ShowEntity> _showsCollection;
+        private readonly IDbContext _context;
 
-        public ShowsRepository(IMongoCollection<ShowEntity> showsCollection)
+        public ShowsRepository(IDbContext context)
         {
-            _showsCollection = showsCollection ?? throw new ArgumentNullException(nameof(showsCollection));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public Task<List<ShowEntity>> GetShowsAsync(int skipCount, int takeCount)
+        public async Task<List<ShowEntity>> GetShowsAsync(int skipCount, int takeCount)
         {
-            var shows = _showsCollection
-                .AsQueryable()
+            var shows = await _context.GetShowsCollection()
+                .Find(p => true)
                 .Skip(skipCount)
-                .Take(takeCount)
-                .ToList();
-            return Task.FromResult(shows);
+                .Limit(takeCount)
+                .ToListAsync();
+            return shows;
         }
     }
 }

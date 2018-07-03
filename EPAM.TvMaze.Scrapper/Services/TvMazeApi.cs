@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using EPAM.TvMaze.Scrapper.Contracts.Models;
 using EPAM.TvMaze.Scrapper.Contracts.Services;
@@ -30,19 +31,19 @@ namespace EPAM.TvMaze.Scrapper.Services
             };
         }
 
-        public async Task<IEnumerable<Show>> GetShowsAsync(int page)
+        public async Task<List<Show>> GetShowsAsync(int page)
         {
             var shows = await RetryingGetAsync<Show>($"shows?page={page}");
             return shows;
         }
 
-        public async Task<IEnumerable<Cast>> GetCastAsync(int showId)
+        public async Task<List<Cast>> GetCastAsync(int showId)
         {
             var casts = await RetryingGetAsync<Cast>($"shows/{showId}/cast");
             return casts;
         }
 
-        private async Task<IEnumerable<T>> RetryingGetAsync<T>(string requestUri)
+        private async Task<List<T>> RetryingGetAsync<T>(string requestUri)
         {
             var retryCounter = 0;
             do
@@ -51,12 +52,15 @@ namespace EPAM.TvMaze.Scrapper.Services
 
                 if (httpReponse.IsSuccessStatusCode)
                 {
-                    var result = await httpReponse.Content.ReadAsAsync<List<T>>();
+                    var result = await httpReponse.Content.ReadAsAsync<List<T>>(new List<MediaTypeFormatter>(){new JsonMediaTypeFormatter()
+                    {
+                        
+                    }});
                     return result;
                 }
 
                 if (httpReponse.StatusCode == HttpStatusCode.NotFound)
-                    return Enumerable.Empty<T>();
+                    return Enumerable.Empty<T>().ToList();
 
                 if (httpReponse.StatusCode == HttpStatusCode.TooManyRequests)
                 {

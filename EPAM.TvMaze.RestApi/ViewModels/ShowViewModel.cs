@@ -8,6 +8,6 @@ namespace EPAM.TvMaze.RestApi.ViewModels
 
         public string Name { get; set; }
 
-        public ICollection<PersonViewModel> Casts { get; set; }
+        public List<PersonViewModel> Casts { get; set; }
     }
 }
